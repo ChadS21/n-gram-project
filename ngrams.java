@@ -1,5 +1,8 @@
 import java.util.ArrayList;
 import java.util.Hashtable;
+import java.io.File;
+import java.util.Scanner;
+import java.io.FileNotFoundException;
 
 /**
  * Write a description of class ngrams here.
@@ -9,27 +12,25 @@ import java.util.Hashtable;
  */
 public class ngrams
 {
-    // instance variables - replace the example below with your own
-    private int x;
+    private String[] text;
+    private Hashtable table;
 
-    /**
-     * Constructor for objects of class ngrams
-     */
-    public ngrams()
-    {
-        // initialise instance variables
-        x = 0;
+    public ngrams() {
+        
     }
-
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
-     */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return x + y;
+    
+    
+    public void loadFile() {
+        try {
+            File a = new File("");
+            Scanner scanner = new Scanner(System.in);
+            while (scanner.hasNextLine()) {
+                String str = scanner.nextLine();
+                table.put(str, true);
+            }
+        }
+        catch (FileNotFoundException x) {
+            
+        }
     }
 }
