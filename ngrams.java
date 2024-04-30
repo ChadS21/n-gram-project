@@ -27,24 +27,29 @@ public class ngrams
         for (int i = 0; i < history.length; i++) {
             System.out.print("[" + history[i] + "] ");
         }
+        System.out.println();
     }
     
     public void addNgrams() {
+        setNgrams();
         for (int i = 0; i < history.length; i++) {
-            if (table.get(history[i]) == null) {
-                ArrayList<String> list = new ArrayList<String>();
-                list.add(history[i + 1]);
-                table.put(history[i], list);
-            }
-            else if (table.get(history[i]).contains(history[i + 1])) {
-                ArrayList<String> list = new ArrayList<String>();
-                list.add(history[i + 1] + " " + history[i + 2]);
-                table.put(history[i], list);
-            }
-            else {
-                table.get(history[i]).add(history[i + 1]);
+            if (i < history.length - 1) {
+                String key = history[i];
+                for (int j = i + 1; j < i + 4 && j < history.length; j++) {
+                    if (table.get(key) == null) {
+                        ArrayList<String> list = new ArrayList<String>();
+                        list.add(history[j]);
+                        table.put(key, list);
+                    }
+                    else {
+                        table.get(key).add(history[j]);
+                    }
+                    System.out.println(key + "->" + history[j]);
+                    key += " " + history[j];
+                }
             }
         }
+        System.out.println(table);
     }
     
     public void loadFile() {
