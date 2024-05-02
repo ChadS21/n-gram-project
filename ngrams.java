@@ -54,7 +54,7 @@ public class ngrams
     
     public void loadFile() {
         try {
-            File file = new File("test.txt");
+            File file = new File("GreatGatsby.txt");
             Scanner scanner = new Scanner(file);
             StringBuilder str = new StringBuilder();
             while (scanner.hasNextLine()) {
